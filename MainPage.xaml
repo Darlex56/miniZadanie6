@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="miniZadanie6.MainPage">
+    
+    <StackLayout>
+        <SearchBar Placeholder="Search items..." TextChanged="SearchBar_TextChanged"/>
+        <Label Text="Recent Searches" FontSize="20"/>
+        <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}" x:Name="refre">
+            <ListView x:Name="CityList" ItemSelected="CityList_ItemSelected" ItemsSource="{Binding OriginalItems} ">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{Binding Location}" />
+                                    <Grid ColumnDefinitions="*,*, *">
+                                        <Label Grid.Column="0" Text="{Binding CheckIn}"/>
+                                        <Label Grid.Column="1" Text="  - " />
+                                        <Label Grid.Column="2" Text="{Binding CheckOut}"  />
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RefreshView>
+    </StackLayout>
+   
+</ContentPage>
